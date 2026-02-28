@@ -1,0 +1,22 @@
+---
+permalink: /rss.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Matthew's Blog</title>
+    <link>{{ "/" | absoluteUrl("https://blog.tiotastic.me") }}</link>
+    <description>Engineering &amp; AI</description>
+    {% for post in collections.all | reverse %}
+    {% set absolutePostUrl %}{{ post.url | absoluteUrl("https://blog.tiotastic.me") }}{% endset %}
+    <item>
+      <title>{{ post.data.title }}</title>
+      <link>{{ absolutePostUrl }}</link>
+      <guid>{{ absolutePostUrl }}</guid>
+      <description>{{ post.templateContent | safe }}</description>
+      <pubDate>{{ post.date | dateToRfc822 }}</pubDate>
+    </item>
+    {% endfor %}
+  </channel>
+</rss>
