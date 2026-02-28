@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22central%22 text-anchor=%22middle%22 font-size=%2252%22%3E%F0%9F%A6%84%3C/text%3E%3C/svg%3E">
 <title>Happy 4th Birthday! 🎉🎉🎉</title>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@700;900&display=swap" rel="stylesheet">
@@ -126,17 +126,18 @@ canvas { display: block; touch-action: none; }
 
 @media (max-width: 640px), (pointer: coarse) {
   #overlay-hint {
-    left: max(env(safe-area-inset-left), 0.5rem);
-    right: max(env(safe-area-inset-right), 0.5rem);
+    left: 0.5rem;
+    right: 0.5rem;
     transform: none;
     width: auto;
-    max-width: none;
-    bottom: max(0.55rem, env(safe-area-inset-bottom));
+    max-width: calc(100vw - 1rem);
+    bottom: 0.55rem;
     padding: 0.35rem 0.55rem;
     border-radius: 14px;
     font-size: clamp(0.6rem, 2.6vw, 0.76rem);
     line-height: 1.28;
     overflow-wrap: anywhere;
+    word-break: break-word;
   }
 
   #overlay-hint .hint-item {
@@ -147,6 +148,17 @@ canvas { display: block; touch-action: none; }
     content: ' · ';
     color: #c084fc;
     opacity: 0.7;
+  }
+}
+
+@supports (left: env(safe-area-inset-left)) {
+  @media (max-width: 640px), (pointer: coarse) {
+    #overlay-hint {
+      left: calc(env(safe-area-inset-left) + 0.5rem);
+      right: calc(env(safe-area-inset-right) + 0.5rem);
+      bottom: calc(env(safe-area-inset-bottom) + 0.55rem);
+      max-width: calc(100vw - env(safe-area-inset-left) - env(safe-area-inset-right) - 1rem);
+    }
   }
 }
 
