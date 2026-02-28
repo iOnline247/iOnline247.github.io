@@ -24,6 +24,7 @@ export default function (eleventyConfig) {
     islandMarkup("svelte", componentName, props)
   );
 
+  eleventyConfig.ignores.add("src/assets/styles.css");
   eleventyConfig.addPassthroughCopy("src/assets");
   eleventyConfig.addPassthroughCopy("src/data");
 

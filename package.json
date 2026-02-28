@@ -3,9 +3,11 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
+    "css:build": "tailwindcss -i ./src/assets/styles.css -o ./dist/assets/styles.css --postcss --minify",
+    "css:watch": "tailwindcss -i ./src/assets/styles.css -o ./dist/assets/styles.css --postcss --watch",
     "prebuild": "tsx scripts/generate-embeddings.ts && vite build",
-    "build": "npm run prebuild && eleventy",
-    "dev": "npm run prebuild && concurrently \"vite build --watch\" \"eleventy --serve\""
+    "build": "npm run prebuild && eleventy && npm run css:build",
+    "dev": "npm run prebuild && npm run css:build && concurrently \"vite build --watch\" \"npm run css:watch\" \"eleventy --serve\""
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.1.2",
