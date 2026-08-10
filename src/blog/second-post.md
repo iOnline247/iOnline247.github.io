@@ -1,7 +1,9 @@
 ---
 title: Second Post
 description: Another article
-layout: base.njk
+layout: post.njk
+published: true
+publishedTimestamp: 2026-08-10
 tags: [engineering]
 ---
 

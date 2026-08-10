@@ -1,12 +1,11 @@
 ---
 title: Digital Tracking
 description: \"Free\" doesn't mean it doesn't have a cost...
-layout: base.njk
+layout: post.njk
+published: false
 draft: true
 tags: [ai, search]
 ---
-
-# Digital Tracking
 
 ## Types of Digital Tracking
 

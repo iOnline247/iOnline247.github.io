@@ -3,6 +3,55 @@ import rssPlugin from "@11ty/eleventy-plugin-rss";
 export default function (eleventyConfig) {
   eleventyConfig.addPlugin(rssPlugin);
 
+  const isPublished = (itemData = {}) => {
+    if (typeof itemData.published === "boolean") {
+      return itemData.published;
+    }
+
+    if (typeof itemData.draft === "boolean") {
+      return !itemData.draft;
+    }
+
+    return true;
+  };
+
+  const formatDate = (value, options) => {
+    const date = value instanceof Date ? value : new Date(value);
+    if (Number.isNaN(date.getTime())) {
+      return "";
+    }
+
+    return new Intl.DateTimeFormat("en-US", {
+      ...options,
+      timeZone: "UTC",
+    }).format(date);
+  };
+
+  const toIsoDate = (value) => {
+    const date = value instanceof Date ? value : new Date(value);
+    if (Number.isNaN(date.getTime())) {
+      return "";
+    }
+
+    return date.toISOString().slice(0, 10);
+  };
+
+  eleventyConfig.addCollection("publishedPosts", (collectionApi) =>
+    collectionApi
+      .getFilteredByGlob("src/blog/**/*.md")
+      .filter((item) => isPublished(item.data))
+  );
+
+  eleventyConfig.addFilter("displayDate", (value) =>
+    formatDate(value, {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    })
+  );
+
+  eleventyConfig.addFilter("htmlDate", (value) => toIsoDate(value));
+
   const encodeJsonAttr = (value) =>
     JSON.stringify(value)
       .replace(/&/g, "&amp;")

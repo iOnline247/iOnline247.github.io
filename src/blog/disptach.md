@@ -1,12 +1,10 @@
 ---
-title: Digital Tracking
+title: Dispatch
 description: My first semantic blog post
-layout: base.njk
-draft: true
+layout: post.njk
+published: true
 tags: [ai, search]
 ---
-
-# Dispatch
 
 My personal task runner controlled by my phone. `dispatch` allows me to have a feedback loop for my research and a Command & Control Center for my Agentic Pipeline.
 
@@ -23,7 +21,7 @@ My personal task runner controlled by my phone. `dispatch` allows me to have a f
 
 {NOTION:TODO:What needs to be created first} {See below}
 
-### Notion API Integration
+#### Notion API Integration
 
 Guide: <https://developers.notion.com/guides/get-started/create-a-notion-integration>
 
@@ -131,7 +129,16 @@ Create Integration: <https://www.notion.so/profile/integrations/internal/form/ne
 }
 ```
 
+## Gmail Setup
+
+Create a new gmail for notifications. Once the login is created, enable 2FA. This is mandatory, so you'll be able to create an App Password.
+
+### App Password
+
+Create an [app password](https://myaccount.google.com/apppasswords)
+
 ### RabbitMQ
+
 
 ## Usage
 

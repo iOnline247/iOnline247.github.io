@@ -1,7 +1,9 @@
 ---
 title: First Post
 description: My first semantic blog post
-layout: base.njk
+layout: post.njk
+published: true
+publishedTimestamp: 2026-08-10
 tags: [ai, search]
 ---
 

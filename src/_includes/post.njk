@@ -1,0 +1,16 @@
+---
+layout: base.njk
+---
+<article>
+  <header class="mb-6">
+    <h1 class="text-3xl font-bold">{{ title }}</h1>
+    {% if publishedTimestamp %}
+    <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">
+      Published
+      <time datetime="{{ publishedTimestamp | htmlDate }}">{{ publishedTimestamp | displayDate }}</time>
+    </p>
+    {% endif %}
+  </header>
+
+  {{ content | safe }}
+</article>
