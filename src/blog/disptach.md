@@ -2,7 +2,7 @@
 title: Dispatch
 description: My first semantic blog post
 layout: post.njk
-published: true
+published: false
 tags: [ai, search]
 ---
 
