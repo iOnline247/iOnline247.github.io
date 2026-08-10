@@ -7,6 +7,4 @@ publishedTimestamp: 2026-08-10
 tags: [engineering]
 ---
 
-# Another Post
-
 More example content for pagination and tagging.

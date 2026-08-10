@@ -7,13 +7,11 @@ publishedTimestamp: 2026-08-10
 tags: [ai, search]
 ---
 
-# Hello World
-
 This demonstrates semantic search, RSS, sitemap, pagination, and tags.
 
 ## React island
 
-{% react "Counter", { start: 2, label: "React counter inside markdown" } %}
+{% react "Counter", { start: 0, label: "React counter inside markdown" } %}
 
 ## Vue island
 
