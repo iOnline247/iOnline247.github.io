@@ -3,11 +3,7 @@ const isPublished = (data = {}) => {
     return data.published;
   }
 
-  if (typeof data.draft === "boolean") {
-    return !data.draft;
-  }
-
-  return true;
+  return false;
 };
 
 export default {

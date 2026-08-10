@@ -8,11 +8,7 @@ export default function (eleventyConfig) {
       return itemData.published;
     }
 
-    if (typeof itemData.draft === "boolean") {
-      return !itemData.draft;
-    }
-
-    return true;
+    return false;
   };
 
   const formatDate = (value, options) => {
