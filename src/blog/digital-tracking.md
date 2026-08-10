@@ -3,19 +3,18 @@ title: Digital Tracking
 description: \"Free\" doesn't mean it doesn't have a cost...
 layout: post.njk
 published: false
-draft: true
 tags: [ai, search]
 ---
 
-## Types of Digital Tracking
+## Types of Digital Tracking  
 
-## Pervasiveness
+## Pervasiveness  
 
-## Best Defense is an Even Better Offense
+## Best Defense is an Even Better Offense  
 
-## Persona was Born
+## Persona was Born  
 
-### Original Prompt
+### Original Prompt  
 
 Study this paper: <https://arxiv.org/pdf/2602.16800v2>
 
