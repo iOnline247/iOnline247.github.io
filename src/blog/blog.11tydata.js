@@ -1,0 +1,27 @@
+const isPublished = (data = {}) => {
+  if (typeof data.published === "boolean") {
+    return data.published;
+  }
+
+  if (typeof data.draft === "boolean") {
+    return !data.draft;
+  }
+
+  return true;
+};
+
+export default {
+  layout: "post.njk",
+  eleventyComputed: {
+    permalink: (data) => {
+      return isPublished(data) ? data.permalink : false;
+    },
+    publishedTimestamp: (data) => {
+      if (!isPublished(data)) {
+        return null;
+      }
+
+      return data.publishedTimestamp || data.date;
+    },
+  },
+};
