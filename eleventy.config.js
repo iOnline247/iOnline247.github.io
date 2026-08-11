@@ -39,10 +39,30 @@ export default function (eleventyConfig) {
     return Number.isNaN(date.getTime()) ? 0 : date.getTime();
   };
 
+  const getValidatedPublishDate = (item) => {
+    const value = item.data?.publishedTimestamp ?? item.data?.date ?? item.date;
+    const date = value instanceof Date ? value : new Date(value);
+
+    if (Number.isNaN(date.getTime())) {
+      const title = item.data?.title || "Untitled";
+      const filePath = item.inputPath || item.page?.inputPath || "unknown file";
+      const rawValue = String(value);
+      throw new Error(
+        `Invalid published date in ${filePath} (title: \"${title}\"): \"${rawValue}\"`
+      );
+    }
+
+    return date;
+  };
+
   eleventyConfig.addCollection("publishedPosts", (collectionApi) =>
     collectionApi
       .getFilteredByGlob("src/blog/**/*.md")
       .filter((item) => isPublished(item.data))
+      .map((item) => {
+        getValidatedPublishDate(item);
+        return item;
+      })
       .sort((a, b) => getPostTimestamp(b) - getPostTimestamp(a))
   );
 
