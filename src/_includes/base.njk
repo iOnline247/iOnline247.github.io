@@ -10,29 +10,31 @@
   <meta property="og:type" content="article">
   <link rel="stylesheet" href="/assets/site.css">
 </head>
-<body class="min-h-screen px-4 py-6 sm:px-6 lg:px-8">
+<body class="min-h-screen px-4 py-4 sm:px-6 sm:py-5 lg:px-8">
   <a class="skip-link" href="#main-content">Skip to content</a>
-  <div class="site-shell mx-auto max-w-4xl rounded-[2rem] p-6 sm:p-8 lg:p-10">
-    <header class="mb-8 border-b border-slate-200 pb-6" aria-labelledby="site-title">
-      <div class="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
-        <div class="md:pr-8">
-          <p class="site-pill inline-flex rounded-full px-3 py-1 text-sm font-semibold uppercase tracking-[0.2em]">Thoughtful engineering notes</p>
-          <h1 id="site-title" class="site-title-display mt-3 text-4xl sm:text-5xl"><a href="/" class="text-inherit no-underline">Matthew’s Blog</a></h1>
-          <p class="mt-3 max-w-2xl text-base text-slate-700">Building better systems: Pragmatic guides to code, security, and human-centric architecture.</p>
-        </div>
-        <div class="w-full md:mt-0 md:w-[22rem] md:min-w-[20rem]">
-          <div class="search-flyout mt-1">
-            <label class="sr-only" for="searchInput">Search posts</label>
-            <span class="search-flyout-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" focusable="false" role="img">
-                <circle cx="11" cy="11" r="7"></circle>
-                <path d="M20 20l-4.35-4.35"></path>
-              </svg>
-            </span>
-            <input id="searchInput" class="site-input search-flyout-input rounded-2xl border border-slate-200 p-3 shadow-sm" placeholder="Search posts" aria-label="Search posts" />
+  <div class="site-shell mx-auto max-w-4xl rounded-[2rem] p-5 sm:p-7 lg:p-8">
+    <header class="mb-6 border-b border-slate-200 pb-5" aria-labelledby="site-title">
+      <div class="flex flex-col gap-4">
+        <div class="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+          <p class="site-pill inline-flex rounded-full px-4 py-1.5 text-base font-semibold uppercase tracking-[0.2em]">Thoughtful engineering notes</p>
+          <div class="w-full sm:w-auto sm:min-w-[15.5rem] sm:max-w-[18rem]">
+            <div class="search-flyout">
+              <label class="sr-only" for="searchInput">Search posts</label>
+              <span class="search-flyout-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" focusable="false" role="img">
+                  <circle cx="11" cy="11" r="7"></circle>
+                  <path d="M20 20l-4.35-4.35"></path>
+                </svg>
+              </span>
+              <input id="searchInput" class="site-input search-flyout-input rounded-2xl border border-slate-200 p-3 shadow-sm" placeholder="Search posts" aria-label="Search posts" />
+            </div>
           </div>
-          <div id="results" class="mt-4 space-y-2"></div>
         </div>
+        <div>
+          <h1 id="site-title" class="site-title-display mt-3 text-4xl sm:text-5xl"><a href="/" class="text-inherit no-underline">Matthew’s Blog</a></h1>
+          <p class="site-tagline mt-2 max-w-[58ch] text-sm sm:text-base text-slate-700">Building better systems: Pragmatic guides to code, security, and human-centric architecture.</p>
+        </div>
+        <div id="results" class="search-results mt-1 space-y-2"></div>
       </div>
     </header>
     <main id="main-content">

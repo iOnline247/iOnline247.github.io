@@ -46,7 +46,29 @@ export default function (eleventyConfig) {
     })
   );
 
+  eleventyConfig.addFilter("displayDateShort", (value) =>
+    formatDate(value, {
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+    })
+  );
+
   eleventyConfig.addFilter("htmlDate", (value) => toIsoDate(value));
+
+  eleventyConfig.addFilter("readingMinutes", (html = "") => {
+    const plainText = String(html)
+      .replace(/<[^>]+>/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+
+    if (!plainText) {
+      return 1;
+    }
+
+    const wordCount = plainText.split(" ").length;
+    return Math.max(1, Math.round(wordCount / 220));
+  });
 
   const encodeJsonAttr = (value) =>
     JSON.stringify(value)
