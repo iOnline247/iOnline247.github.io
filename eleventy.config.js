@@ -32,10 +32,18 @@ export default function (eleventyConfig) {
     return date.toISOString().slice(0, 10);
   };
 
+  const getPostTimestamp = (item) => {
+    const value = item.data?.publishedTimestamp ?? item.data?.date ?? item.date;
+    const date = value instanceof Date ? value : new Date(value);
+
+    return Number.isNaN(date.getTime()) ? 0 : date.getTime();
+  };
+
   eleventyConfig.addCollection("publishedPosts", (collectionApi) =>
     collectionApi
       .getFilteredByGlob("src/blog/**/*.md")
       .filter((item) => isPublished(item.data))
+      .sort((a, b) => getPostTimestamp(b) - getPostTimestamp(a))
   );
 
   eleventyConfig.addFilter("displayDate", (value) =>
