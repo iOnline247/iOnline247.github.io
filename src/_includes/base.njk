@@ -30,7 +30,12 @@
         </div>
         <div>
           <h1 id="site-title" class="site-title-display mt-3 text-4xl sm:text-5xl"><a href="/" class="text-inherit no-underline">Matthew’s Blog</a></h1>
-          <p class="site-tagline mt-2 max-w-[58ch] text-sm sm:text-base text-slate-700">Building better systems: Pragmatic guides to code, security, and human-centric architecture.</p>
+          {% if page.url == "/" %}
+            <p class="site-tagline site-tagline-home mt-2 max-w-[58ch] text-sm sm:text-base text-slate-700" aria-label="Building better systems: Pragmatic guides to code, security, and human-centric architecture.">
+              <span class="site-tagline-prefix">Building better systems:</span>
+              <span class="site-tagline-typed">Pragmatic guides to code, security, and human-centric architecture.</span>
+            </p>
+          {% endif %}
         </div>
         <p id="searchStatus" class="sr-only" aria-live="polite" aria-atomic="true"></p>
         <div id="searchResults" data-search-preview class="search-results mt-1 space-y-2" aria-live="polite" aria-atomic="true"></div>

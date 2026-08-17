@@ -243,6 +243,26 @@ body :focus-visible {
 	color: var(--muted);
 }
 
+.site-tagline-home {
+	/* display: flex; */
+	/* flex-wrap: nowrap; */
+	gap: 0.35rem;
+	/* align-items: flex-start; */
+	max-width: 70%;
+	display: inline-block;
+}
+
+.site-tagline-prefix {
+	color: var(--muted);
+	/* white-space: nowrap; */
+}
+
+.site-tagline-typed {
+	display: inline;
+	/* max-width: 50%; */
+	color: var(--muted);
+}
+
 .site-section-title {
 	font-family: 'Space Mono', 'JetBrains Mono', monospace;
 	font-weight: 700;
