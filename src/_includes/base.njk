@@ -17,13 +17,15 @@
       <div class="flex flex-col gap-4">
         <div class="grid gap-3 sm:grid-cols-[1fr_auto] sm:items-start">
           <p class="site-pill inline-flex rounded-full px-4 py-1.5 text-base font-semibold uppercase tracking-[0.2em] sm:col-start-1 sm:row-start-1">Notes from the field</p>
-          <h1 id="site-title" class="site-title-display mt-3 text-4xl sm:text-5xl"><a href="/" class="text-inherit no-underline">Matthew’s Blog</a></h1>
-          {% if page.url == "/" %}
-            <p class="site-tagline site-tagline-home mt-2 max-w-[58ch] text-sm sm:text-base text-slate-700" aria-label="Building better systems: Pragmatic guides to code, security, and human-centric architecture.">
-              <span class="site-tagline-prefix">Building better systems:</span>
-              <span class="site-tagline-typed">Pragmatic guides to code, security, and human-centric architecture.</span>
-            </p>
-          {% endif %}
+          <div class="sm:col-start-1 sm:row-start-2">
+            <h1 id="site-title" class="site-title-display mt-3 text-4xl sm:text-5xl"><a href="/" class="text-inherit no-underline">Matthew’s Blog</a></h1>
+            {% if page.url == "/" %}
+              <p class="site-tagline site-tagline-home mt-2 max-w-[58ch] text-sm sm:text-base text-slate-700" aria-label="Building better systems: Pragmatic guides to code, security, and human-centric architecture.">
+                <span class="site-tagline-prefix">Building better systems:</span>
+                <span class="site-tagline-typed">Pragmatic guides to code, security, and human-centric architecture.</span>
+              </p>
+            {% endif %}
+          </div>
           <div class="w-full sm:col-start-2 sm:row-start-1 sm:w-auto sm:min-w-[15.5rem] sm:max-w-[18rem]">
             <div class="search-terminal" data-search-shell>
               <label class="sr-only" for="searchInput">Search posts</label>
