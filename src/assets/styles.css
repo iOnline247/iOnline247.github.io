@@ -248,7 +248,7 @@ body :focus-visible {
 	/* flex-wrap: nowrap; */
 	gap: 0.35rem;
 	/* align-items: flex-start; */
-	max-width: 70%;
+	max-width: 62%;
 	display: inline-block;
 }
 

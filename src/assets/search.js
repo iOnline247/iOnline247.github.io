@@ -13,6 +13,39 @@ const searchFeedResults = document.querySelector("[data-search-results]");
 const searchPreviewResults = document.querySelector("[data-search-preview]");
 const searchPagination = document.querySelector("[data-search-pagination]");
 
+function initTaglineTypewriter() {
+  const tagline = document.querySelector(".site-tagline-home .site-tagline-typed");
+
+  if (!tagline) {
+    return;
+  }
+
+  const fullText = tagline.textContent ?? "";
+
+  if (!fullText) {
+    return;
+  }
+
+  const characters = Array.from(fullText);
+  const frameDelayMs = 34;
+  let index = 0;
+
+  tagline.textContent = "";
+
+  const step = () => {
+    index += 1;
+    tagline.textContent = characters.slice(0, index).join("");
+
+    if (index < characters.length) {
+      window.setTimeout(step, frameDelayMs);
+    }
+  };
+
+  window.setTimeout(step, frameDelayMs);
+}
+
+initTaglineTypewriter();
+
 if (!searchInput || (!searchFeedResults && !searchPreviewResults)) {
   throw new Error("Search controls are missing from the page.");
 }
