@@ -8,14 +8,14 @@ eleventyExcludeFromCollections: true
     <title>Matthew's Blog</title>
     <link>{{ "/" | absoluteUrl("https://blog.tiotastic.me") }}</link>
     <description>Engineering &amp; AI</description>
-    {% for post in collections.all | reverse %}
+    {% for post in collections.publishedPosts | reverse %}
     {% set absolutePostUrl %}{{ post.url | absoluteUrl("https://blog.tiotastic.me") }}{% endset %}
     <item>
       <title>{{ post.data.title }}</title>
       <link>{{ absolutePostUrl }}</link>
       <guid>{{ absolutePostUrl }}</guid>
       <description>{{ post.templateContent | safe }}</description>
-      <pubDate>{{ post.date | dateToRfc822 }}</pubDate>
+      <pubDate>{{ (post.data.publishedTimestamp or post.date) | dateToRfc822 }}</pubDate>
     </item>
     {% endfor %}
   </channel>

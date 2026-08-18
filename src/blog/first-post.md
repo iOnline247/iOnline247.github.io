@@ -1,17 +1,17 @@
 ---
 title: First Post
-description: My first semantic blog post
-layout: base.njk
+description: My first blog post with examples of framework islands and shortcodes.
+layout: post.njk
+published: true
+publishedTimestamp: 2026-08-09
 tags: [ai, search]
 ---
 
-# Hello World
-
-This demonstrates semantic search, RSS, sitemap, pagination, and tags.
+This demonstrates RSS, sitemap, pagination, and tags.
 
 ## React island
 
-{% react "Counter", { start: 2, label: "React counter inside markdown" } %}
+{% react "Counter", { start: 0, label: "React counter inside markdown" } %}
 
 ## Vue island
 

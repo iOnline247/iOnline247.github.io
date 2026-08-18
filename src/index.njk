@@ -1,12 +1,79 @@
 ---
 layout: base.njk
 pagination:
-  data: collections.all
+  data: collections.publishedPosts
   size: 5
 ---
-<h2 class="text-xl font-semibold mb-4">Posts</h2>
-<ul class="space-y-2">
-{% for post in pagination.items %}
-  <li><a href="{{ post.url }}" class="text-blue-500">{{ post.data.title }}</a></li>
-{% endfor %}
-</ul>
+<section class="site-card rounded-3xl p-6 sm:p-8" aria-labelledby="posts-heading" data-search-feed>
+  <div class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+    <div>
+      <p id="posts-heading" data-search-heading class="site-pill inline-flex rounded-full px-4 py-1.5 text-base font-semibold uppercase tracking-[0.2em]">Latest posts</p>
+    </div>
+  </div>
+  <ul data-search-results class="mt-6 space-y-3" aria-live="polite" aria-busy="false">
+  {% for post in pagination.items %}
+    <li class="site-post-item rounded-2xl transition">
+      <a href="{{ post.url }}" class="site-post-link block h-full rounded-2xl p-4">
+        <span class="site-link site-post-title text-lg">{{ post.data.title }}</span>
+        <span class="site-post-meta mt-2 block text-xs uppercase tracking-[0.12em]">
+          <time datetime="{{ (post.data.publishedTimestamp or post.date) | htmlDate }}">{{ (post.data.publishedTimestamp or post.date) | displayDateShort }}</time>
+          <span aria-hidden="true">&nbsp;&bull;&nbsp;</span>
+          <span>{{ post.templateContent | readingMinutes }} min read</span>
+        </span>
+        <span class="mt-2 block text-sm text-slate-700">{{ post.data.description or 'Read the full article for more detail.' }}</span>
+      </a>
+    </li>
+  {% endfor %}
+  </ul>
+
+  {% if pagination.pages.length > 1 %}
+  {% set totalPages = pagination.pages.length %}
+  {% set currentPage = pagination.pageNumber + 1 %}
+  {% set windowStart = currentPage - 1 %}
+  {% set windowEnd = currentPage + 1 %}
+
+  {% if windowStart < 2 %}
+    {% set windowStart = 2 %}
+    {% set windowEnd = 4 %}
+  {% endif %}
+
+  {% if windowEnd > (totalPages - 1) %}
+    {% set windowEnd = totalPages - 1 %}
+    {% set windowStart = totalPages - 3 %}
+  {% endif %}
+
+  {% if windowStart < 2 %}
+    {% set windowStart = 2 %}
+  {% endif %}
+
+  <nav class="mt-6" aria-label="Posts pagination" data-search-pagination>
+    <ol class="flex items-center justify-center gap-2 text-sm" aria-label="Page numbers">
+      <li>
+        <a href="{{ pagination.hrefs[0] }}" class="inline-flex h-9 min-w-9 items-center justify-center rounded-full border px-3 font-semibold {{ 'border-slate-900 bg-slate-900 text-white' if currentPage == 1 else 'site-link border-slate-300' }}" aria-label="Go to page 1" {% if currentPage == 1 %}aria-current="page"{% endif %}>1</a>
+      </li>
+
+      {% if windowStart > 2 %}
+      <li aria-hidden="true" class="px-1 text-slate-500">...</li>
+      {% endif %}
+
+      {% for pageNumber in range(windowStart, windowEnd + 1) %}
+        {% if pageNumber >= 2 and pageNumber <= (totalPages - 1) %}
+        <li>
+          <a href="{{ pagination.hrefs[pageNumber - 1] }}" class="inline-flex h-9 min-w-9 items-center justify-center rounded-full border px-3 font-semibold {{ 'border-slate-900 bg-slate-900 text-white' if currentPage == pageNumber else 'site-link border-slate-300' }}" aria-label="Go to page {{ pageNumber }}" {% if currentPage == pageNumber %}aria-current="page"{% endif %}>{{ pageNumber }}</a>
+        </li>
+        {% endif %}
+      {% endfor %}
+
+      {% if windowEnd < (totalPages - 1) %}
+      <li aria-hidden="true" class="px-1 text-slate-500">...</li>
+      {% endif %}
+
+      {% if totalPages > 1 %}
+      <li>
+        <a href="{{ pagination.hrefs[totalPages - 1] }}" class="inline-flex h-9 min-w-9 items-center justify-center rounded-full border px-3 font-semibold {{ 'border-slate-900 bg-slate-900 text-white' if currentPage == totalPages else 'site-link border-slate-300' }}" aria-label="Go to page {{ totalPages }}" {% if currentPage == totalPages %}aria-current="page"{% endif %}>{{ totalPages }}</a>
+      </li>
+      {% endif %}
+    </ol>
+  </nav>
+  {% endif %}
+</section>
