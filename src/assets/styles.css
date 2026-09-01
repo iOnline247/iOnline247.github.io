@@ -213,11 +213,6 @@ body :focus-visible {
 }
 
 @media (max-width: 767px) {
-	.search-terminal {
-		align-items: flex-start;
-		flex-direction: column;
-	}
-
 	.search-terminal-prefix {
 		font-size: 0.68rem;
 	}
