@@ -91,6 +91,13 @@ body :focus-visible {
 	border: 1px solid var(--border);
 }
 
+@media (max-width: 767px) {
+	.site-pill {
+		width: 100%;
+		text-align: center;
+	}
+}
+
 .site-link {
 	color: var(--accent);
 	font-weight: 600;
