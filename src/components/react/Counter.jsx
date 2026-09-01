@@ -8,7 +8,7 @@ export default function Counter({ start = 0, label = "React counter" }) {
       <p className="font-semibold">{label}</p>
       <p className="text-sm opacity-80">Count: {count}</p>
       <button
-        className="px-3 py-1 rounded bg-gray-200 dark:bg-gray-700"
+        className="px-3 py-1 rounded bg-[var(--accent)] text-white font-mono hover:bg-[var(--accent-strong)] transition-colors"
         type="button"
         onClick={() => setCount((value) => value + 1)}
       >

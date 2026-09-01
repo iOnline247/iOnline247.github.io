@@ -125,6 +125,29 @@ body :focus-visible {
 	box-shadow: 0 8px 16px rgba(255, 91, 34, 0.3);
 }
 
+/* Global button styling for all <button> elements */
+button {
+	background: var(--accent);
+	color: #ffffff;
+	border-radius: 6px;
+	padding: 0.7rem 1.5rem;
+	font-weight: 600;
+	text-decoration: none;
+	border: none;
+	cursor: pointer;
+	transition: all 200ms ease;
+	text-transform: uppercase;
+	font-size: 0.85rem;
+	letter-spacing: 0.1em;
+	font-family: 'JetBrains Mono', 'Space Mono', monospace;
+}
+
+button:hover {
+	background: var(--accent-strong);
+	transform: translateY(-2px);
+	box-shadow: 0 8px 16px rgba(255, 91, 34, 0.3);
+}
+
 .site-input {
 	background: var(--surface);
 	color: var(--text);
